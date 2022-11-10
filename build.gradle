@@ -5,7 +5,8 @@ plugins {
 }
 
 group = 'site.metacoding'
-version = '0.0.1-SNAPSHOT'
+// 1. 버전 직접 변경
+version = '0.0.1'
 sourceCompatibility = '11'
 
 configurations {
@@ -35,4 +36,9 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+// 2. plain 파일 생성하지 않는 설정
+jar {
+	enabled = false
 }
