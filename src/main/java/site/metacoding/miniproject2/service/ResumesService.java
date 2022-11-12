@@ -2,10 +2,8 @@ package site.metacoding.miniproject2.service;
 
 import java.util.List;
 
-import javax.websocket.server.PathParam;
-
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
 import site.metacoding.miniproject2.domain.educations.EducationsDao;
@@ -21,6 +19,7 @@ import site.metacoding.miniproject2.dto.ResumesRespDto.ResumeDetailRespDto;
 import site.metacoding.miniproject2.dto.ResumesRespDto.ResumeListRespDto;
 
 /* >>>> 연지 작업함 <<<< */
+@Transactional(readOnly = true)
 @RequiredArgsConstructor
 @Service
 public class ResumesService {
@@ -71,6 +70,7 @@ public class ResumesService {
     }
     /* 연지 작업 종료 */
 
+    @Transactional
     public void insert(ResumeWriteReqDto resumeWriteReqDto) {
 
         resumesDao.insert(resumeWriteReqDto);
@@ -95,6 +95,7 @@ public class ResumesService {
         return resumeListRespDto;
     }
 
+    @Transactional
     public void updateById(ResumeUpdateReqDto resumeUpdateReqDto) {
         // 1. 이력서 수정하기 (제목, 자기소개)
         resumesDao.updateById(resumeUpdateReqDto);
@@ -105,6 +106,7 @@ public class ResumesService {
         resumesDao.updateById(resumeUpdateReqDto);
     }
 
+    @Transactional
     public void deleteById(Integer id) {
         resumesDao.deleteById(id);
     }

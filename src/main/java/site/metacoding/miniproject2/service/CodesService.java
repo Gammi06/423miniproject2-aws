@@ -3,6 +3,7 @@ package site.metacoding.miniproject2.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
 import site.metacoding.miniproject2.domain.codes.CareersCodeDao;
@@ -15,6 +16,7 @@ import site.metacoding.miniproject2.dto.CodesRespDto.RegionsCodeRespDto;
 import site.metacoding.miniproject2.dto.CodesRespDto.SkillsCodeRespDto;
 
 /* >>>> 연지 작업함 <<<< */
+@Transactional(readOnly = true)
 @RequiredArgsConstructor
 @Service
 public class CodesService {
