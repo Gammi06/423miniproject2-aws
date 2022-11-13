@@ -10,6 +10,7 @@ import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
+import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
@@ -25,11 +26,11 @@ import site.metacoding.miniproject2.dto.CompanysReqDto.CompanysInsertReqDto;
 import site.metacoding.miniproject2.dto.CompanysReqDto.CompanysUpdateReqDto;
 import site.metacoding.miniproject2.dto.SessionUsers;
 
-@ActiveProfiles("test") // 테스트 어플리케이션 실행
-@Sql("classpath:truncate.sql")
+@ActiveProfiles("htest") // 테스트 어플리케이션 실행
 @Transactional
 @AutoConfigureMockMvc // MockMvc Ioc 컨테이너에 등록 실제가 아닌 가짜
 @SpringBootTest(webEnvironment = WebEnvironment.MOCK) // MOCK은 가짜 환경임
+@WebAppConfiguration
 public class TestCompanysApiController {
 
     // header json
@@ -61,7 +62,8 @@ public class TestCompanysApiController {
                 .build());
     }
 
-    @Sql(scripts = "classpath:createTest.sql", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+    @Sql(scripts = "classpath:create.sql", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+    @Sql(scripts = "classpath:truncate.sql", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
     @Test
     public void findByCompanyIdInfo_test() throws Exception {
 
@@ -80,29 +82,8 @@ public class TestCompanysApiController {
         resultActions.andExpect(MockMvcResultMatchers.jsonPath("$.data.companyName").value("이재모피자"));
     }
 
-    @Sql(scripts = "classpath:createTest.sql", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
-    @Test
-    public void insertSubcribes_test() throws Exception {
-
-        // given
-
-        // when
-
-        // then
-    }
-
-    @Sql(scripts = "classpath:createTest.sql", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
-    @Test
-    public void deleteSubcribes_test() throws Exception {
-
-        // given
-
-        // when
-
-        // then
-    }
-
-    @Sql(scripts = "classpath:createTest.sql", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+    @Sql(scripts = "classpath:create.sql", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+    @Sql(scripts = "classpath:truncate.sql", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
     @Test
     public void insert_test() throws Exception {
 
@@ -140,7 +121,8 @@ public class TestCompanysApiController {
     }
     // 회사서비스 가입 테스트 코드 성공
 
-    @Sql(scripts = "classpath:createTest.sql", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+    @Sql(scripts = "classpath:create.sql", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+    @Sql(scripts = "classpath:truncate.sql", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
     @Test
     public void updateCompanyId_test() throws Exception {
 
@@ -174,7 +156,8 @@ public class TestCompanysApiController {
         // 회사정보 엡데이트 테스트
     }
 
-    @Sql(scripts = "classpath:createTest.sql", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+    @Sql(scripts = "classpath:create.sql", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+    @Sql(scripts = "classpath:truncate.sql", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
     @Test
     public void deleteCompanysId_test() throws Exception {
 
@@ -194,24 +177,28 @@ public class TestCompanysApiController {
 
     }/// 회사서비스 삭제 테스트
 
-    @Sql(scripts = "classpath:createTest.sql", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
-    @Test
-    public void subscribesform_test() throws Exception {
+    // @Sql(scripts = "classpath:create.sql", executionPhase =
+    // ExecutionPhase.BEFORE_TEST_METHOD)
+    // @Sql(scripts = "classpath:truncate.sql", executionPhase =
+    // ExecutionPhase.AFTER_TEST_METHOD)
+    // @Test
+    // public void subscribesform_test() throws Exception {
 
-        Integer UserId = 1;
+    // Integer UserId = 1;
 
-        // when
-        ResultActions resultActions = mvc.perform(
-                MockMvcRequestBuilders.get("/s/mypage/subscribes")
-                        .accept(APPLICATION_JSON)
-                        .session(session));
+    // // when
+    // ResultActions resultActions = mvc.perform(
+    // MockMvcRequestBuilders.get("/s/mypage/subscribes")
+    // .accept(APPLICATION_JSON)
+    // .session(session));
 
-        // then
-        MvcResult mvcResult = resultActions.andReturn();
-        System.out.println("debugggg:" + mvcResult.getResponse().getContentAsString());
+    // // then
+    // MvcResult mvcResult = resultActions.andReturn();
+    // System.out.println("debugggg:" +
+    // mvcResult.getResponse().getContentAsString());
 
-        resultActions.andExpect(MockMvcResultMatchers.status().isOk());
-        resultActions.andExpect(MockMvcResultMatchers.jsonPath("$.code").value(1));
-    }
+    // resultActions.andExpect(MockMvcResultMatchers.status().isOk());
+    // resultActions.andExpect(MockMvcResultMatchers.jsonPath("$.code").value(1));
+    // }
     // subscribesform junit 테스트 완료
 }

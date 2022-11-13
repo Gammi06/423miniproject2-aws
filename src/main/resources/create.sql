@@ -1,24 +1,3 @@
-USE test9doitdb;
-
-DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS companys;
-DROP TABLE IF EXISTS resumes;
-DROP TABLE IF EXISTS wanteds;
-DROP TABLE IF EXISTS positions_code;
-DROP TABLE IF EXISTS skills_code;
-DROP TABLE IF EXISTS regions_code;
-DROP TABLE IF EXISTS careers_code;
-DROP TABLE IF EXISTS application_status;
-DROP TABLE IF EXISTS matchings;
-DROP TABLE IF EXISTS applys;
-DROP TABLE IF EXISTS subscribes;
-DROP TABLE IF EXISTS likes;
-DROP TABLE IF EXISTS myskills;
-DROP TABLE IF EXISTS mycareers;
-DROP TABLE IF EXISTS educations;
-DROP TABLE IF EXISTS requests;
-DROP TABLE IF EXISTS recruits;
-
 CREATE TABLE users (
    id INT PRIMARY KEY AUTO_INCREMENT,
    user_id VARCHAR(20),
@@ -225,53 +204,53 @@ VALUES(1, 3, '프론트 개발자인 박가람입니다. 2', '박가람씨의 �
 
 
 INSERT INTO wanteds(position_code_id, career_code_id, pay, company_id, title, detail, view_count, created, enddate, checked)
-VALUES(1, 1, 5000, 1, '서버 개발자 구인', '이재모 피자 홈페이지를 개발하실 서버 개발자를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), LAST_DAY(NOW()), FALSE);
+VALUES(1, 1, 5000, 1, '서버 개발자 구인', '이재모 피자 홈페이지를 개발하실 서버 개발자를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), '2022-11-30 23:26:56', FALSE);
 INSERT INTO wanteds(position_code_id, career_code_id, pay, company_id, title, detail, view_count, created, enddate, checked)
-VALUES(3, 3, 4000, 1, '프론트 개발자 구인', '이재모 피자 홈페이지를 개발하실 프론트 개발자를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), LAST_DAY(NOW()), FALSE);
+VALUES(3, 3, 4000, 1, '프론트 개발자 구인', '이재모 피자 홈페이지를 개발하실 프론트 개발자를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), '2022-11-30 23:26:56', FALSE);
 INSERT INTO wanteds(position_code_id, career_code_id, pay, company_id, title, detail, view_count, created, enddate, checked)
-VALUES(1, 4, 8000, 2, '서버 개발자 구인', '삼성에서 함께 일하실 서버 개발자를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), LAST_DAY(NOW()), FALSE);
+VALUES(1, 4, 8000, 2, '서버 개발자 구인', '삼성에서 함께 일하실 서버 개발자를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), '2022-11-30 23:26:56', FALSE);
 INSERT INTO wanteds(position_code_id, career_code_id, pay, company_id, title, detail, view_count, created, enddate, checked)
-VALUES(1, 1, 3200, 2, '서버 개발자 구인', '삼성에서 함께 일하실 서버 개발자를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), LAST_DAY(NOW()), FALSE);
+VALUES(1, 1, 3200, 2, '서버 개발자 구인', '삼성에서 함께 일하실 서버 개발자를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), '2022-11-30 23:26:56', FALSE);
 INSERT INTO wanteds(position_code_id, career_code_id, pay, company_id, title, detail, view_count, created, enddate, checked)
-VALUES(3, 4, 7000, 2, '프론트 개발자 구인', '삼성에서 함께 일하실 프론트 개발자를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), LAST_DAY(NOW()), FALSE);
+VALUES(3, 4, 7000, 2, '프론트 개발자 구인', '삼성에서 함께 일하실 프론트 개발자를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), '2022-11-30 23:26:56', FALSE);
 INSERT INTO wanteds(position_code_id, career_code_id, pay, company_id, title, detail, view_count, created, enddate, checked)
-VALUES(3, 1, 3000, 2, '프론트 개발자 구인', '삼성에서 함께 일하실 프론트 개발자를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), LAST_DAY(NOW()), FALSE);
+VALUES(3, 1, 3000, 2, '프론트 개발자 구인', '삼성에서 함께 일하실 프론트 개발자를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), '2022-11-30 23:26:56', FALSE);
 INSERT INTO wanteds(position_code_id, career_code_id, pay, company_id, title, detail, view_count, created, enddate, checked)
-VALUES(2, 4, 6000, 2, '웹 퍼블리셔 구인', '삼성에서 함께 일하실 웹 퍼블리셔를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), LAST_DAY(NOW()), FALSE);
+VALUES(2, 4, 6000, 2, '웹 퍼블리셔 구인', '삼성에서 함께 일하실 웹 퍼블리셔를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), '2022-11-30 23:26:56', FALSE);
 INSERT INTO wanteds(position_code_id, career_code_id, pay, company_id, title, detail, view_count, created, enddate, checked)
-VALUES(2, 1, 2900, 2, '웹 퍼블리셔 구인', '삼성에서 함께 일하실 웹 퍼블리셔를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), LAST_DAY(NOW()), FALSE);
+VALUES(2, 1, 2900, 2, '웹 퍼블리셔 구인', '삼성에서 함께 일하실 웹 퍼블리셔를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), '2022-11-30 23:26:56', FALSE);
 INSERT INTO wanteds(position_code_id, career_code_id, pay, company_id, title, detail, view_count, created, enddate, checked)
-VALUES(1, 4, 8000, 3, '서버 개발자 구인', 'LG에서 함께 일하실 서버 개발자를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), LAST_DAY(NOW()), FALSE);
+VALUES(1, 4, 8000, 3, '서버 개발자 구인', 'LG에서 함께 일하실 서버 개발자를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), '2022-11-30 23:26:56', FALSE);
 INSERT INTO wanteds(position_code_id, career_code_id, pay, company_id, title, detail, view_count, created, enddate, checked)
-VALUES(1, 1, 3200, 3, '서버 개발자 구인', 'LG에서 함께 일하실 서버 개발자를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), LAST_DAY(NOW()), FALSE);
+VALUES(1, 1, 3200, 3, '서버 개발자 구인', 'LG에서 함께 일하실 서버 개발자를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), '2022-11-30 23:26:56', FALSE);
 INSERT INTO wanteds(position_code_id, career_code_id, pay, company_id, title, detail, view_count, created, enddate, checked)
-VALUES(3, 4, 7000, 3, '프론트 개발자 구인', 'LG에서 함께 일하실 프론트 개발자를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), LAST_DAY(NOW()), FALSE);
+VALUES(3, 4, 7000, 3, '프론트 개발자 구인', 'LG에서 함께 일하실 프론트 개발자를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), '2022-11-30 23:26:56', FALSE);
 INSERT INTO wanteds(position_code_id, career_code_id, pay, company_id, title, detail, view_count, created, enddate, checked)
-VALUES(3, 1, 3000, 3, '프론트 개발자 구인', 'LG에서 함께 일하실 프론트 개발자를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), LAST_DAY(NOW()), FALSE);
+VALUES(3, 1, 3000, 3, '프론트 개발자 구인', 'LG에서 함께 일하실 프론트 개발자를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), '2022-11-30 23:26:56', FALSE);
 INSERT INTO wanteds(position_code_id, career_code_id, pay, company_id, title, detail, view_count, created, enddate, checked)
-VALUES(2, 4, 6000, 3, '웹 퍼블리셔 구인', 'LG에서 함께 일하실 웹 퍼블리셔를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), LAST_DAY(NOW()), FALSE);
+VALUES(2, 4, 6000, 3, '웹 퍼블리셔 구인', 'LG에서 함께 일하실 웹 퍼블리셔를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), '2022-11-30 23:26:56', FALSE);
 INSERT INTO wanteds(position_code_id, career_code_id, pay, company_id, title, detail, view_count, created, enddate, checked)
-VALUES(2, 1, 2900, 3, '웹 퍼블리셔 구인', 'LG에서 함께 일하실 웹 퍼블리셔를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), LAST_DAY(NOW()), FALSE);
+VALUES(2, 1, 2900, 3, '웹 퍼블리셔 구인', 'LG에서 함께 일하실 웹 퍼블리셔를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), '2022-11-30 23:26:56', FALSE);
 INSERT INTO wanteds(position_code_id, career_code_id, pay, company_id, title, detail, view_count, created, enddate, checked)
-VALUES(1, 4, 8000, 4, '서버 개발자 구인', '애플코리아에서 함께 일하실 서버 개발자를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), LAST_DAY(NOW()), FALSE);
+VALUES(1, 4, 8000, 4, '서버 개발자 구인', '애플코리아에서 함께 일하실 서버 개발자를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), '2022-11-30 23:26:56', FALSE);
 INSERT INTO wanteds(position_code_id, career_code_id, pay, company_id, title, detail, view_count, created, enddate, checked)
-VALUES(3, 1, 3200, 4, '서버 개발자 구인', '애플코리아에서 함께 일하실 서버 개발자를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), LAST_DAY(NOW()), FALSE);
+VALUES(3, 1, 3200, 4, '서버 개발자 구인', '애플코리아에서 함께 일하실 서버 개발자를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), '2022-11-30 23:26:56', FALSE);
 INSERT INTO wanteds(position_code_id, career_code_id, pay, company_id, title, detail, view_count, created, enddate, checked)
-VALUES(3, 4, 7000, 4, '프론트 개발자 구인', '애플코리아에서 함께 일하실 프론트 개발자를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), LAST_DAY(NOW()), FALSE);
+VALUES(3, 4, 7000, 4, '프론트 개발자 구인', '애플코리아에서 함께 일하실 프론트 개발자를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), '2022-11-30 23:26:56', FALSE);
 INSERT INTO wanteds(position_code_id, career_code_id, pay, company_id, title, detail, view_count, created, enddate, checked)
-VALUES(3, 1, 3000, 4, '프론트 개발자 구인', '애플코리아에서 함께 일하실 프론트 개발자를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), LAST_DAY(NOW()), FALSE);
+VALUES(3, 1, 3000, 4, '프론트 개발자 구인', '애플코리아에서 함께 일하실 프론트 개발자를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), '2022-11-30 23:26:56', FALSE);
 INSERT INTO wanteds(position_code_id, career_code_id, pay, company_id, title, detail, view_count, created, enddate, checked)
-VALUES(2, 4, 6000, 4, '웹 퍼블리셔 구인', '애플코리아에서 함께 일하실 웹 퍼블리셔를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), LAST_DAY(NOW()), FALSE);
+VALUES(2, 4, 6000, 4, '웹 퍼블리셔 구인', '애플코리아에서 함께 일하실 웹 퍼블리셔를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), '2022-11-30 23:26:56', FALSE);
 INSERT INTO wanteds(position_code_id, career_code_id, pay, company_id, title, detail, view_count, created, enddate, checked)
-VALUES(2, 1, 2900, 4, '웹 퍼블리셔 구인', '애플코리아에서 함께 일하실 웹 퍼블리셔를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), LAST_DAY(NOW()), FALSE);
+VALUES(2, 1, 2900, 4, '웹 퍼블리셔 구인', '애플코리아에서 함께 일하실 웹 퍼블리셔를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), '2022-11-30 23:26:56', FALSE);
 INSERT INTO wanteds(position_code_id, career_code_id, pay, company_id, title, detail, view_count, created, enddate, checked)
-VALUES(3, 2, 5000, 5, '프론트 개발자 구인', '굿디자인에서 함께 일하실 프론트 개발자를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), LAST_DAY(NOW()), FALSE);
+VALUES(3, 2, 5000, 5, '프론트 개발자 구인', '굿디자인에서 함께 일하실 프론트 개발자를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), '2022-11-30 23:26:56', FALSE);
 INSERT INTO wanteds(position_code_id, career_code_id, pay, company_id, title, detail, view_count, created, enddate, checked)
-VALUES(3, 1, 3000, 5, '프론트 개발자 구인', '굿디자인에서 함께 일하실 프론트 개발자를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), LAST_DAY(NOW()), FALSE);
+VALUES(3, 1, 3000, 5, '프론트 개발자 구인', '굿디자인에서 함께 일하실 프론트 개발자를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), '2022-11-30 23:26:56', FALSE);
 INSERT INTO wanteds(position_code_id, career_code_id, pay, company_id, title, detail, view_count, created, enddate, checked)
-VALUES(2, 2, 4000, 5, '웹 퍼블리셔 구인', '굿디자인에서 함께 일하실 웹 퍼블리셔를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), LAST_DAY(NOW()), FALSE);
+VALUES(2, 2, 4000, 5, '웹 퍼블리셔 구인', '굿디자인에서 함께 일하실 웹 퍼블리셔를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), '2022-11-30 23:26:56', FALSE);
 INSERT INTO wanteds(position_code_id, career_code_id, pay, company_id, title, detail, view_count, created, enddate, checked)
-VALUES(2, 1, 2900, 5, '웹 퍼블리셔 구인', '굿디자인에서 함께 일하실 웹 퍼블리셔를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), LAST_DAY(NOW()), FALSE);
+VALUES(2, 1, 2900, 5, '웹 퍼블리셔 구인', '굿디자인에서 함께 일하실 웹 퍼블리셔를 구인합니다. 회사에 대한 설명이 쓰여있다.', 0, NOW(), '2022-11-30 23:26:56', FALSE);
 
 INSERT INTO positions_code(name, created) VALUES('백앤드개발자', NOW());
 INSERT INTO positions_code(name, created) VALUES('웹퍼블리셔', NOW());
@@ -443,19 +422,19 @@ INSERT INTO careers_code(name, created) VALUES('4년', NOW());
 INSERT INTO careers_code(name, created) VALUES('5년 이상', NOW());
 
 INSERT INTO mycareers(user_id, resume_id, startdate, enddate, company_name)
-VALUES(1, 1, NOW(), MAKEDATE(2024, 245), 'FINE');
+VALUES(1, 1, NOW(), '2022-11-01 23:26:56', 'FINE');
 INSERT INTO mycareers(user_id, resume_id, startdate, enddate, company_name)
-VALUES(4, 2, NOW(), MAKEDATE(2025, 125), '산호디자인');
+VALUES(4, 2, NOW(), '2022-11-01 23:26:56', '산호디자인');
 INSERT INTO mycareers(user_id, resume_id, startdate, enddate, company_name)
-VALUES(4, 2, NOW(), MAKEDATE(2027, 305), 'WAVE');
+VALUES(4, 2, NOW(), '2022-11-01 23:26:56', 'WAVE');
 INSERT INTO mycareers(user_id, resume_id, startdate, enddate, company_name)
-VALUES(5, 3, NOW(), MAKEDATE(2025, 305), 'CookTV');
+VALUES(5, 3, NOW(), '2022-11-01 23:26:56', 'CookTV');
 INSERT INTO mycareers(user_id, resume_id, startdate, enddate, company_name)
-VALUES(9, 4, NOW(), MAKEDATE(2023, 305), 'smartAI');
+VALUES(9, 4, NOW(), '2022-11-01 23:26:56', 'smartAI');
 INSERT INTO mycareers(user_id, resume_id, startdate, enddate, company_name)
 VALUES(10, 5, NULL, NULL, NULL);
 INSERT INTO mycareers(user_id, resume_id, startdate, enddate, company_name)
-VALUES(11, 6, NOW(), MAKEDATE(2024, 325), 'FMserver');
+VALUES(11, 6, NOW(), '2022-11-01 23:26:56', 'FMserver');
 
 INSERT INTO likes(user_id, wanted_id, created) VALUES(1, 2, NOW());
 INSERT INTO likes(user_id, wanted_id, created) VALUES(1, 21, NOW());

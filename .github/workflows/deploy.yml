@@ -8,28 +8,7 @@ on:
 jobs:
   build: # 마음대로 적어도됨.
     runs-on: ubuntu-18.04
-
-    services:
-      mariadb:
-        image: mariadb:latest
-        ports:
-          - 3306
-        # env:
-        #   MYSQL_USER: test9doit
-        #   MYSQL_PASSWORD: 423206
-        #   MYSQL_DATABASE: test9doitdb
-        #   MYSQL_ROOT_PASSWORD: green1234
-        # options: --health-cmd="mysqladmin ping" --health-interval=5s --health-timeout=2s --health-retries=3
-
     steps:
-      - name: Shutdown Ubuntu MySQL (SUDO)
-        run: sudo service mysql stop # Shutdown the Default MySQL, "sudo" is necessary, please not remove it
-     
-      - name: Set up MariaDB
-        uses: getong/mariadb-action@v1.1
-
-
-
       - name: Checkout
         uses: actions/checkout@v2
       - name: Set up JDK 11

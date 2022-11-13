@@ -10,6 +10,7 @@ import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
+import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -20,11 +21,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import site.metacoding.miniproject2.dto.SessionUsers;
 
-@ActiveProfiles("test") // 테스트 어플리케이션 실행
-@Sql("classpath:truncate.sql")
+@ActiveProfiles("htest") // 테스트 어플리케이션 실행
 @Transactional
 @AutoConfigureMockMvc // MockMvc Ioc 컨테이너에 등록 실제가 아닌 가짜
 @SpringBootTest(webEnvironment = WebEnvironment.MOCK) // MOCK은 가짜 환경임
+@WebAppConfiguration
 public class TestApplicationStatusApiController {
 
     // header json
@@ -48,7 +49,8 @@ public class TestApplicationStatusApiController {
                 .build());
     }
 
-    @Sql(scripts = "classpath:createTest.sql", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+    @Sql(scripts = "classpath:create.sql", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+    @Sql(scripts = "classpath:truncate.sql", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
     @Test
     public void findAllList_test() throws Exception {
 
@@ -68,7 +70,8 @@ public class TestApplicationStatusApiController {
         resultActions.andExpect(MockMvcResultMatchers.jsonPath("$.data.keyword").value(""));
     }
 
-    @Sql(scripts = "classpath:createTest.sql", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+    @Sql(scripts = "classpath:create.sql", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+    @Sql(scripts = "classpath:truncate.sql", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
     @Test
     public void findWaitingList_test() throws Exception {
 
@@ -88,7 +91,8 @@ public class TestApplicationStatusApiController {
         resultActions.andExpect(MockMvcResultMatchers.jsonPath("$.data.keyword").value("삼성"));
     }
 
-    @Sql(scripts = "classpath:createTest.sql", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+    @Sql(scripts = "classpath:create.sql", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+    @Sql(scripts = "classpath:truncate.sql", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
     @Test
     public void findFinalList_test() throws Exception {
 

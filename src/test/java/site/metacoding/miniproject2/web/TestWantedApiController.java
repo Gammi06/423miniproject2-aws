@@ -10,6 +10,7 @@ import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
+import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
@@ -22,11 +23,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import site.metacoding.miniproject2.dto.ApplyReqDto.ApplyUserReqDto;
 import site.metacoding.miniproject2.dto.SessionUsers;
 
-@ActiveProfiles("test") // 테스트 어플리케이션 실행
-@Sql("classpath:truncate.sql")
+@ActiveProfiles("htest") // 테스트 어플리케이션 실행
 @Transactional
 @AutoConfigureMockMvc // MockMvc Ioc 컨테이너에 등록 실제가 아닌 가짜
 @SpringBootTest(webEnvironment = WebEnvironment.MOCK) // MOCK은 가짜 환경임
+@WebAppConfiguration
 public class TestWantedApiController {
 
     // header json
@@ -50,105 +51,123 @@ public class TestWantedApiController {
                 .build());
     }
 
-    @Sql(scripts = "classpath:createTest.sql", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
-    @Test
-    public void findById_test() throws Exception {
+    // @Sql(scripts = "classpath:create.sql", executionPhase =
+    // ExecutionPhase.BEFORE_TEST_METHOD)
+    // @Sql(scripts = "classpath:truncate.sql", executionPhase =
+    // ExecutionPhase.AFTER_TEST_METHOD)
+    // @Test
+    // public void findById_test() throws Exception {
 
-        // given
-        Integer wantedId = 1;
+    // // given
+    // Integer wantedId = 1;
 
-        // when
-        ResultActions resultActions = mvc.perform(
-                MockMvcRequestBuilders.get("/wanted/" + wantedId)
-                        .accept(APPLICATION_JSON)
-                        .session(session));
+    // // when
+    // ResultActions resultActions = mvc.perform(
+    // MockMvcRequestBuilders.get("/wanted/" + wantedId)
+    // .accept(APPLICATION_JSON)
+    // .session(session));
 
-        // then
-        resultActions.andExpect(MockMvcResultMatchers.status().isOk());
-        resultActions.andExpect(MockMvcResultMatchers.jsonPath("$.code").value(1));
-        resultActions.andExpect(MockMvcResultMatchers.jsonPath("$.data.title").value("서버 개발자 구인"));
+    // // then
+    // resultActions.andExpect(MockMvcResultMatchers.status().isOk());
+    // resultActions.andExpect(MockMvcResultMatchers.jsonPath("$.code").value(1));
+    // resultActions.andExpect(MockMvcResultMatchers.jsonPath("$.data.title").value("서버
+    // 개발자 구인"));
 
-    }
+    // }
 
-    @Sql(scripts = "classpath:createTest.sql", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
-    @Test
-    public void findAllByLike_test() throws Exception {
+    // @Sql(scripts = "classpath:create.sql", executionPhase =
+    // ExecutionPhase.BEFORE_TEST_METHOD)
+    // @Sql(scripts = "classpath:truncate.sql", executionPhase =
+    // ExecutionPhase.AFTER_TEST_METHOD)
+    // @Test
+    // public void findAllByLike_test() throws Exception {
 
-        // given
+    // // given
 
-        // when
-        ResultActions resultActions = mvc.perform(
-                MockMvcRequestBuilders.get("/s/api/wanted/like")
-                        .accept(APPLICATION_JSON)
-                        .session(session));
+    // // when
+    // ResultActions resultActions = mvc.perform(
+    // MockMvcRequestBuilders.get("/s/api/wanted/like")
+    // .accept(APPLICATION_JSON)
+    // .session(session));
 
-        // then
-        resultActions.andExpect(MockMvcResultMatchers.status().isOk());
-        resultActions.andExpect(MockMvcResultMatchers.jsonPath("$.code").value(1));
-        resultActions.andExpect(MockMvcResultMatchers.jsonPath("$.data[0].title").value("프론트 개발자 구인"));
+    // // then
+    // resultActions.andExpect(MockMvcResultMatchers.status().isOk());
+    // resultActions.andExpect(MockMvcResultMatchers.jsonPath("$.code").value(1));
+    // resultActions.andExpect(MockMvcResultMatchers.jsonPath("$.data[0].title").value("프론트
+    // 개발자 구인"));
 
-    }
+    // }
 
-    @Sql(scripts = "classpath:createTest.sql", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
-    @Test
-    public void findAllByPositionCodeId_test() throws Exception {
+    // @Sql(scripts = "classpath:create.sql", executionPhase =
+    // ExecutionPhase.BEFORE_TEST_METHOD)
+    // @Sql(scripts = "classpath:truncate.sql", executionPhase =
+    // ExecutionPhase.AFTER_TEST_METHOD)
+    // @Test
+    // public void findAllByPositionCodeId_test() throws Exception {
 
-        // given
-        Integer positionCodeId = 1;
+    // // given
+    // Integer positionCodeId = 1;
 
-        // when
-        ResultActions resultActions = mvc.perform(
-                MockMvcRequestBuilders.get("/wanted/position/" + positionCodeId)
-                        .accept(APPLICATION_JSON)
-                        .session(session));
+    // // when
+    // ResultActions resultActions = mvc.perform(
+    // MockMvcRequestBuilders.get("/wanted/position/" + positionCodeId)
+    // .accept(APPLICATION_JSON)
+    // .session(session));
 
-        // then
-        resultActions.andExpect(MockMvcResultMatchers.status().isOk());
-        resultActions.andExpect(MockMvcResultMatchers.jsonPath("$.code").value(1));
-        resultActions.andExpect(MockMvcResultMatchers.jsonPath("$.data[0].positionCodeName").value("백앤드개발자"));
+    // // then
+    // resultActions.andExpect(MockMvcResultMatchers.status().isOk());
+    // resultActions.andExpect(MockMvcResultMatchers.jsonPath("$.code").value(1));
+    // resultActions.andExpect(MockMvcResultMatchers.jsonPath("$.data[0].positionCodeName").value("백앤드개발자"));
 
-    }
+    // }
 
-    @Sql(scripts = "classpath:createTest.sql", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
-    @Test
-    public void findAllByCompanyId_test() throws Exception {
+    // @Sql(scripts = "classpath:create.sql", executionPhase =
+    // ExecutionPhase.BEFORE_TEST_METHOD)
+    // @Sql(scripts = "classpath:truncate.sql", executionPhase =
+    // ExecutionPhase.AFTER_TEST_METHOD)
+    // @Test
+    // public void findAllByCompanyId_test() throws Exception {
 
-        // given
-        Integer companyId = 1;
+    // // given
+    // Integer companyId = 1;
 
-        // when
-        ResultActions resultActions = mvc.perform(
-                MockMvcRequestBuilders.get("/wanted/company/" + companyId)
-                        .accept(APPLICATION_JSON)
-                        .session(session));
+    // // when
+    // ResultActions resultActions = mvc.perform(
+    // MockMvcRequestBuilders.get("/wanted/company/" + companyId)
+    // .accept(APPLICATION_JSON)
+    // .session(session));
 
-        // then
-        resultActions.andExpect(MockMvcResultMatchers.status().isOk());
-        resultActions.andExpect(MockMvcResultMatchers.jsonPath("$.code").value(1));
-        resultActions.andExpect(MockMvcResultMatchers.jsonPath("$.data[0].companyName").value("이재모피자"));
+    // // then
+    // resultActions.andExpect(MockMvcResultMatchers.status().isOk());
+    // resultActions.andExpect(MockMvcResultMatchers.jsonPath("$.code").value(1));
+    // resultActions.andExpect(MockMvcResultMatchers.jsonPath("$.data[0].companyName").value("이재모피자"));
 
-    }
+    // }
 
-    @Sql(scripts = "classpath:createTest.sql", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
-    @Test
-    public void insertLike_test() throws Exception {
+    // @Sql(scripts = "classpath:create.sql", executionPhase =
+    // ExecutionPhase.BEFORE_TEST_METHOD)
+    // @Sql(scripts = "classpath:truncate.sql", executionPhase =
+    // ExecutionPhase.AFTER_TEST_METHOD)
+    // @Test
+    // public void insertLike_test() throws Exception {
 
-        // given
-        Integer wantedId = 1;
+    // // given
+    // Integer wantedId = 1;
 
-        // when
-        ResultActions resultActions = mvc.perform(
-                MockMvcRequestBuilders.post("/s/api/wanted/" + wantedId + "/like")
-                        .accept(APPLICATION_JSON)
-                        .session(session));
+    // // when
+    // ResultActions resultActions = mvc.perform(
+    // MockMvcRequestBuilders.post("/s/api/wanted/" + wantedId + "/like")
+    // .accept(APPLICATION_JSON)
+    // .session(session));
 
-        // then
-        resultActions.andExpect(MockMvcResultMatchers.status().isOk());
-        resultActions.andExpect(MockMvcResultMatchers.jsonPath("$.code").value(1));
-        resultActions.andExpect(MockMvcResultMatchers.jsonPath("$.data.userId").value(1));
-    }
+    // // then
+    // resultActions.andExpect(MockMvcResultMatchers.status().isOk());
+    // resultActions.andExpect(MockMvcResultMatchers.jsonPath("$.code").value(1));
+    // resultActions.andExpect(MockMvcResultMatchers.jsonPath("$.data.userId").value(1));
+    // }
 
-    @Sql(scripts = "classpath:createTest.sql", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+    @Sql(scripts = "classpath:create.sql", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+    @Sql(scripts = "classpath:truncate.sql", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
     @Test
     public void deleteLike_test() throws Exception {
 
@@ -167,7 +186,8 @@ public class TestWantedApiController {
 
     }
 
-    @Sql(scripts = "classpath:createTest.sql", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+    @Sql(scripts = "classpath:create.sql", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+    @Sql(scripts = "classpath:truncate.sql", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
     @Test
     public void insertApply_test() throws Exception {
 
@@ -192,24 +212,28 @@ public class TestWantedApiController {
 
     }
 
-    @Sql(scripts = "classpath:createTest.sql", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
-    @Test
-    public void likesform_test() throws Exception {
+    // @Sql(scripts = "classpath:create.sql", executionPhase =
+    // ExecutionPhase.BEFORE_TEST_METHOD)
+    // @Sql(scripts = "classpath:truncate.sql", executionPhase =
+    // ExecutionPhase.AFTER_TEST_METHOD)
+    // @Test
+    // public void likesform_test() throws Exception {
 
-        Integer Id = 1;
+    // Integer Id = 1;
 
-        // when
-        ResultActions resultActions = mvc.perform(
-                MockMvcRequestBuilders.get("/s/mypage/likes")
-                        .accept(APPLICATION_JSON)
-                        .session(session));
+    // // when
+    // ResultActions resultActions = mvc.perform(
+    // MockMvcRequestBuilders.get("/s/mypage/likes")
+    // .accept(APPLICATION_JSON)
+    // .session(session));
 
-        // then
-        MvcResult mvcResult = resultActions.andReturn();
-        System.out.println("debugggg:" + mvcResult.getResponse().getContentAsString());
+    // // then
+    // MvcResult mvcResult = resultActions.andReturn();
+    // System.out.println("debugggg:" +
+    // mvcResult.getResponse().getContentAsString());
 
-        resultActions.andExpect(MockMvcResultMatchers.status().isOk());
-        resultActions.andExpect(MockMvcResultMatchers.jsonPath("$.code").value(1));
-    }
+    // resultActions.andExpect(MockMvcResultMatchers.status().isOk());
+    // resultActions.andExpect(MockMvcResultMatchers.jsonPath("$.code").value(1));
+    // }
 
 }
