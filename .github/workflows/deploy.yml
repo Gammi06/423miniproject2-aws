@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-18.04
 
     steps:
-    - uses: actions/checkout@v1
+    #- uses: actions/checkout@v1
     - name: Shutdown Ubuntu MySQL (SUDO)
       run: sudo service mysql stop
     - name: Use Node.js ${{ matrix.node-version }}
@@ -30,6 +30,8 @@ jobs:
         npm test -- --password=${{ secrets.DatabasePassword }}
       env:
         CI: true
+
+        
       - name: Checkout
         uses: actions/checkout@v2
       - name: Set up JDK 11
