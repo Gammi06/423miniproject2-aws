@@ -9,29 +9,27 @@ jobs:
   build: # 마음대로 적어도됨.
     runs-on: ubuntu-18.04
 
-    steps:
-    #- uses: actions/checkout@v1
-    - name: Shutdown Ubuntu MySQL (SUDO)
-      run: sudo service mysql stop
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: Set up MariaDB 10
-      uses: getong/mariadb-action@master
-      with:
-        mysql version: 10.4.10
-        mysql database: test
-        mysql root password: ${{ secrets.DatabasePassword }}
-    - name: npm install, build, and test
-      run: |
-        npm install
-        npm run lint
-        npm test -- --password=${{ secrets.DatabasePassword }}
-      env:
-        CI: true
+    services:
+      mariadb:
+        image: mariadb:latest
+        ports:
+          - 3306
+        # env:
+        #   MYSQL_USER: test9doit
+        #   MYSQL_PASSWORD: 423206
+        #   MYSQL_DATABASE: test9doitdb
+        #   MYSQL_ROOT_PASSWORD: green1234
+        # options: --health-cmd="mysqladmin ping" --health-interval=5s --health-timeout=2s --health-retries=3
 
-        
+    steps:
+      - name: Shutdown Ubuntu MySQL (SUDO)
+        run: sudo service mysql stop # Shutdown the Default MySQL, "sudo" is necessary, please not remove it
+     
+      - name: Set up MariaDB
+        uses: getong/mariadb-action@v1.1
+
+
+
       - name: Checkout
         uses: actions/checkout@v2
       - name: Set up JDK 11
