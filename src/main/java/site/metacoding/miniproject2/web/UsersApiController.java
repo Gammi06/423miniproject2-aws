@@ -15,7 +15,6 @@ import site.metacoding.miniproject2.dto.CMRespDto;
 import site.metacoding.miniproject2.dto.SessionUsers;
 import site.metacoding.miniproject2.dto.UsersReqDto.EditReqDto;
 import site.metacoding.miniproject2.dto.UsersReqDto.JoinReqDto;
-import site.metacoding.miniproject2.dto.UsersReqDto.LoginReqDto;
 import site.metacoding.miniproject2.dto.UsersReqDto.PasswordEditReqDto;
 import site.metacoding.miniproject2.service.UsersService;
 
@@ -24,15 +23,6 @@ import site.metacoding.miniproject2.service.UsersService;
 public class UsersApiController {
     private final UsersService usersService;
     private final HttpSession session;
-
-    // 성유 작업
-    @PostMapping("/login")
-    public CMRespDto<?> login(@RequestBody LoginReqDto loginReqDto) { // 로그인
-        SessionUsers sessionUsers = usersService.findByUserId(loginReqDto);
-        session.setAttribute("principal", sessionUsers);
-        return new CMRespDto<>(1, "로그인 성공", sessionUsers.getUserId());
-
-    }
 
     @PutMapping("/s/api/{id}/edit")
     public CMRespDto<?> update(@PathVariable Integer id,
